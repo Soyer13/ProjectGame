@@ -1,0 +1,40 @@
+Game Design Document Emil Chudzik
+
+Game Name
+live short die last
+
+Story
+rogue AI sth sth 
+
+Gener
+Fps (sth between classic doom ,ghostrunner and hotline miami)
+
+Core Concept
+Fast Peace FPS Shooter with low time to kill ratio/ one shot one kill.
+With clean minimalist graphic like in mirror's edge or super hot
+
+Features
+
+	Player:
+		Shooting
+		Fast movment with sliding and dashing
+
+	Enemies
+		Static turets
+		moving eneims
+	Some Kind of end level door or sth
+
+Features	
+	Player:	
+		Shooting
+		Fast movement with sliding and dashing
+	Enemies	
+		Static turrets
+		moving enemies
+	Some Kind of end level door or sth
+
+
+
+Target
+Monster drinking ADHD teens and classic doom enjoyers
+game will be promoted by fact that it will come out before KARLSON
