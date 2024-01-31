@@ -1,0 +1,21 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using TMPro;
+
+public class UiManager : MonoBehaviour
+{
+    public static UiManager instance;
+    public TextMeshProUGUI Life;   
+    // Start is called before the first frame update
+    void Start()
+    {
+        instance = this;
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        
+    }
+}
