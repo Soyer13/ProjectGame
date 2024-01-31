@@ -7,13 +7,15 @@ public class PlayerMovement : MonoBehaviour
 {
     public Camera playerCamera;
     public float walkSpeed = 6f;
-    public float SprintSpeed = 12f;
+   
     public float jumpPower = 7f;
     public float gravity = 10f;
 
     [SerializeField] KeyCode DashKey;
     [SerializeField] float DashSpeed;
     private bool isDashReady = true;
+    
+
 
     public float lookSpeed = 2f;
     public float lookXLimit = 45f;
@@ -42,10 +44,10 @@ public class PlayerMovement : MonoBehaviour
         forward = transform.TransformDirection(Vector3.forward);
         right = transform.TransformDirection(Vector3.right);
 
-        // Press Left Shift to run
-        bool isRunning = Input.GetKey(KeyCode.B);
-        curSpeedX = canMove ? (isRunning ? SprintSpeed : walkSpeed) * Input.GetAxis("Vertical") : 0;
-        curSpeedY = canMove ? (isRunning ? SprintSpeed : walkSpeed) * Input.GetAxis("Horizontal") : 0;
+        
+        
+        curSpeedX = canMove ?  walkSpeed * Input.GetAxis("Vertical") : 0;
+        curSpeedY = canMove ?  walkSpeed * Input.GetAxis("Horizontal") : 0;
         float movementDirectionY = moveDirection.y;
         if(Input.GetKey(DashKey) && isDashReady)
         {
