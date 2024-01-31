@@ -8,6 +8,7 @@ public class UiManager : MonoBehaviour
     public static UiManager instance;
     public GameObject PlayerUiPanel;
     public GameObject DeadPanel;
+    public GameObject ESCmenu;
     public TextMeshProUGUI Life;   
     // Start is called before the first frame update
     void Start()

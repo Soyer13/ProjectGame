@@ -44,7 +44,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        if (GameManager.instance.isPlayerDead == false)
+        if (GameManager.instance.isPlayerDead == false && GameManager.instance.isGameStoped == false)
         { 
             #region Handles Movment
             forward = transform.TransformDirection(Vector3.forward);
@@ -97,11 +97,14 @@ public class PlayerMovement : MonoBehaviour
             #endregion
 
             #region Shooting
-
-            if(Input.GetKey(ShootButton) && isShoot)
+            if(GameManager.instance.isGameStoped != true)
             {
-                StartCoroutine(shoot());
+                if(Input.GetKey(ShootButton) && isShoot)
+                {
+                    StartCoroutine(shoot());
+                }
             }
+            
 
             #endregion
         }
