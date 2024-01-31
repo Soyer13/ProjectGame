@@ -77,4 +77,12 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(1);
     }
 
+    public void LoadLevel(int lvlId)
+    {
+        SceneManager.LoadScene(lvlId);
+    }
+    public void ExitGame()
+    {
+        Application.Quit();
+    }
 }
