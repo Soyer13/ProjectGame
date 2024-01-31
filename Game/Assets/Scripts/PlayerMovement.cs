@@ -11,6 +11,9 @@ public class PlayerMovement : MonoBehaviour
     public float jumpPower = 7f;
     public float gravity = 10f;
 
+    [SerializeField] KeyCode DashKey;
+    [SerializeField] float DashSpeed;
+    private bool isDashReady = true;
 
     public float lookSpeed = 2f;
     public float lookXLimit = 45f;
@@ -20,7 +23,10 @@ public class PlayerMovement : MonoBehaviour
 
     public bool canMove = true;
 
-
+    Vector3 forward;
+    Vector3 right;
+    float curSpeedX;
+    float curSpeedY;
     CharacterController characterController;
     void Start()
     {
@@ -33,15 +39,22 @@ public class PlayerMovement : MonoBehaviour
     {
 
         #region Handles Movment
-        Vector3 forward = transform.TransformDirection(Vector3.forward);
-        Vector3 right = transform.TransformDirection(Vector3.right);
+        forward = transform.TransformDirection(Vector3.forward);
+        right = transform.TransformDirection(Vector3.right);
 
         // Press Left Shift to run
-        bool isRunning = Input.GetKey(KeyCode.LeftShift);
-        float curSpeedX = canMove ? (isRunning ? SprintSpeed : walkSpeed) * Input.GetAxis("Vertical") : 0;
-        float curSpeedY = canMove ? (isRunning ? SprintSpeed : walkSpeed) * Input.GetAxis("Horizontal") : 0;
+        bool isRunning = Input.GetKey(KeyCode.B);
+        curSpeedX = canMove ? (isRunning ? SprintSpeed : walkSpeed) * Input.GetAxis("Vertical") : 0;
+        curSpeedY = canMove ? (isRunning ? SprintSpeed : walkSpeed) * Input.GetAxis("Horizontal") : 0;
         float movementDirectionY = moveDirection.y;
-        moveDirection = (forward * curSpeedX) + (right * curSpeedY);
+        if(Input.GetKey(DashKey) && isDashReady)
+        {
+            StartCoroutine(Dash());
+        }
+        else
+        {
+            moveDirection = (forward * curSpeedX) + (right * curSpeedY);
+        }
 
         #endregion
 
@@ -74,5 +87,14 @@ public class PlayerMovement : MonoBehaviour
         }
 
         #endregion
+    }
+
+    IEnumerator Dash()
+    {
+        Debug.Log("Dash");
+        isDashReady = false;
+        moveDirection = (forward * curSpeedX * DashSpeed) + (right * curSpeedY);
+        yield return new WaitForSeconds(3);
+        isDashReady = true;
     }
 }
