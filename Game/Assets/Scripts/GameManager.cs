@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -22,10 +23,19 @@ public class GameManager : MonoBehaviour
         UiManager.instance.Life.text = PlayerLife.ToString();
         if(PlayerLife <= 0)
         {
-            
+            UiManager.instance.PlayerUiPanel.SetActive(false);
+            UiManager.instance.DeadPanel.SetActive(true);
             Debug.Log("Player is Dead");
             isPlayerDead = true;
            
         }
+    }
+
+    public void ReloadLevel()
+    {
+
+        Time.timeScale = 1;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex, LoadSceneMode.Single);
+
     }
 }
