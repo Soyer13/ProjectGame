@@ -141,7 +141,7 @@ MonoBehaviour:
   DashKey: 304
   DashSpeed: 10
   lookSpeed: 2
-  lookXLimit: 15
+  lookXLimit: 0
   canMove: 1
 --- !u!1 &6141324444413607001
 GameObject:

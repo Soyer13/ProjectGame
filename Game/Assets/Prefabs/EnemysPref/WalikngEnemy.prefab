@@ -272,7 +272,7 @@ Transform:
   m_GameObject: {fileID: 8402248458366508678}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 3.3207598, y: 0.0000009536743, z: 16.119303}
-  m_LocalScale: {x: 1.4, y: 1.4, z: 1.4}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1551751661366018158}
@@ -328,7 +328,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   EnemySpeed: 2
-  distanceCheck: 10
+  distanceCheck: 20
   StopPursuitDistance: 5
   bullet: {fileID: 8749322931404659181, guid: 2ab0843cbb95df343b7c0e0448a11ffb, type: 3}
   bulletspawnpoint: {fileID: 8127889358488922319}
