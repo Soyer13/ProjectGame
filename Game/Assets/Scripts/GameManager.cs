@@ -22,7 +22,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        UiManager.instance.Life.text = PlayerLife.ToString();
+        UiManager.instance.Life.text = PlayerLife.ToString() + " HP";
         if(PlayerLife <= 0 )
         {
             UiManager.instance.PlayerUiPanel.SetActive(false);
@@ -31,7 +31,7 @@ public class GameManager : MonoBehaviour
             isPlayerDead = true;
            
         }
-        if(Input.GetKey(PauseKey))
+        if(Input.GetKeyDown(PauseKey))
         {
             if(isGameStoped == false)
             {
