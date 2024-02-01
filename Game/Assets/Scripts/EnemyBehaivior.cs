@@ -8,6 +8,7 @@ public class EnemyBehaivior : MonoBehaviour
     
     [SerializeField] float EnemySpeed;
     [SerializeField] float distanceCheck;
+    [SerializeField] float StopPursuitDistance;
     [SerializeField] GameObject bullet;
     [SerializeField] GameObject bulletspawnpoint;
     [SerializeField] GameObject[] wanderingPoints;
@@ -18,12 +19,14 @@ public class EnemyBehaivior : MonoBehaviour
     private bool isWandering = true;
     int movePoint = 0;
     private Vector3 travelPoint;
+    private Vector3 PlayerVector3;
     // Start is called before the first frame update
     void Start()
     {
         Player = GameObject.FindGameObjectWithTag("Player").transform;
         movePoint = Random.Range(0, wanderingPoints.Length);
         travelPoint = new Vector3(wanderingPoints[movePoint].transform.position.x , 0f, wanderingPoints[movePoint].transform.position.z);
+        PlayerVector3 = new Vector3(Player.position.x,0f,Player.position.z);
         //EnemySpeed = Enemy.Speed;
     }
 
@@ -39,6 +42,10 @@ public class EnemyBehaivior : MonoBehaviour
             {
 
                 StartCoroutine(shoot());
+            }
+            if(Vector3.Distance(transform.position, Player.position) > StopPursuitDistance)
+            {
+                this.transform.position = Vector3.MoveTowards(transform.position, PlayerVector3, EnemySpeed * Time.deltaTime);
             }
         }
         else 
