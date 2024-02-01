@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemyTuretBehaivior : MonoBehaviour
 {
     Transform Player;
-    [Range(1f,10f)]
+   
     [SerializeField] float distanceCheck;
     [SerializeField] GameObject bullet;
     [SerializeField] GameObject bulletspawnpoint;
