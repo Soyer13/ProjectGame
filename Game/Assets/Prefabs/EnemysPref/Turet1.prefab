@@ -509,7 +509,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4995743b394065f43a83483952130433, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  distanceCheck: 10
+  distanceCheck: 30
   bullet: {fileID: 8749322931404659181, guid: 2ab0843cbb95df343b7c0e0448a11ffb, type: 3}
   bulletspawnpoint: {fileID: 724849356916221773}
 --- !u!1 &724849355871702422

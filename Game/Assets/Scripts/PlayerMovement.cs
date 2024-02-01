@@ -121,7 +121,7 @@ public class PlayerMovement : MonoBehaviour
         Debug.Log("Shoot");
         isShoot = false;       
         GameObject bulletInst = Instantiate(Bullet, bulletSpawn.transform.position, this.transform.rotation);
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(0.5f);
         isShoot = true;
 
     }
