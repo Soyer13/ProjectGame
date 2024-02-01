@@ -22,8 +22,8 @@ public class EnemyBehaivior : MonoBehaviour
     void Start()
     {
         Player = GameObject.FindGameObjectWithTag("Player").transform;
-         movePoint = Random.Range(0, wanderingPoints.Length);
-        travelPoint = wanderingPoints[movePoint].transform.position;
+        movePoint = Random.Range(0, wanderingPoints.Length);
+        travelPoint = new Vector3(wanderingPoints[movePoint].transform.position.x , 0f, wanderingPoints[movePoint].transform.position.z);
         //EnemySpeed = Enemy.Speed;
     }
 
@@ -50,13 +50,13 @@ public class EnemyBehaivior : MonoBehaviour
                 //StartCoroutine(enemyWander());
                 if(Vector3.Distance(transform.position, travelPoint) > 1)
                 {
-                    this.transform.position = Vector3.MoveTowards(transform.position, wanderingPoints[movePoint].transform.position, EnemySpeed * Time.deltaTime);
-                 //   transform.LookAt(wanderingPoints[movePoint].transform.position);
+                    this.transform.position = Vector3.MoveTowards(transform.position, travelPoint, EnemySpeed * Time.deltaTime);
+                    transform.LookAt(travelPoint);
                 }
                 else
                 {
                     movePoint = Random.Range(0, wanderingPoints.Length);
-                    travelPoint = wanderingPoints[movePoint].transform.position;
+                    travelPoint = new Vector3(wanderingPoints[movePoint].transform.position.x, 0f, wanderingPoints[movePoint].transform.position.z);
                 }
 
             }
@@ -73,39 +73,5 @@ public class EnemyBehaivior : MonoBehaviour
 
     }
 
-    IEnumerator enemyWander() {
-        isWandering = false;
-        int movePoint = Random.Range(0, wanderingPoints.Length);
-        /*
-        if(this.transform.position != wanderingPoints[movePoint].transform.position)
-        {
-            Debug.Log("Move to " + movePoint);
-            transform.LookAt(wanderingPoints[movePoint].transform.position);
-            transform.position += transform.forward * EnemySpeed * Time.deltaTime;
-        }
-        else
-        {
-            isWandering = true;
-        }
-        
-         while(this.transform.position != wanderingPoints[movePoint].transform.position)
-        {
-            
-            transform.position += transform.forward * EnemySpeed * Time.deltaTime;
-            yield return null;
-        }
-         
-         */
-        Debug.Log("Move to " + movePoint);
-        transform.LookAt(wanderingPoints[movePoint].transform.position);
-        // transform.position += transform.forward * EnemySpeed * Time.deltaTime;
-        while (this.transform.position != wanderingPoints[movePoint].transform.position)
-        {
-
-            this.transform.position = Vector3.MoveTowards(transform.position, wanderingPoints[movePoint].transform.position, EnemySpeed * Time.deltaTime);
-            yield return null;
-        }
-        yield return new WaitForSeconds(5);
-        isWandering = true;
-    }
+   
 }
