@@ -6,6 +6,7 @@ public class FirstAid : MonoBehaviour
 {
     // Start is called before the first frame update
     BoxCollider myboxCider;
+    [SerializeField] AudioSource HealAudioSorce;
     void Start()
     {
         myboxCider = GetComponent<BoxCollider>();
@@ -16,6 +17,7 @@ public class FirstAid : MonoBehaviour
     {
         if(other.gameObject.tag == "Player")
         {
+            HealAudioSorce.Play();
             GameManager.instance.PlayerLife += 1;
             Destroy(this.gameObject);
         }

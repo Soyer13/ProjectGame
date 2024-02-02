@@ -12,6 +12,7 @@ public class EnemyBehaivior : MonoBehaviour
     [SerializeField] GameObject bullet;
     [SerializeField] GameObject bulletspawnpoint;
     [SerializeField] GameObject[] wanderingPoints;
+    [SerializeField] AudioSource EnemyShootSound;
 
     //public EnemySO Enemy;
 
@@ -74,6 +75,7 @@ public class EnemyBehaivior : MonoBehaviour
     {
         Debug.Log("EnnemyShoot");
         ishooot = false;
+        EnemyShootSound.Play();
         GameObject bulletInst = Instantiate(bullet, bulletspawnpoint.transform.position, Quaternion.identity);
         yield return new WaitForSeconds(2);
         ishooot = true;

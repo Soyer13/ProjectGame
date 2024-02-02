@@ -9,6 +9,7 @@ public class EnemyTuretBehaivior : MonoBehaviour
     [SerializeField] float distanceCheck;
     [SerializeField] GameObject bullet;
     [SerializeField] GameObject bulletspawnpoint;
+    [SerializeField] AudioSource TuretAudioSorce;
     Animator animator;
 
     //public EnemySO Enemy;
@@ -47,6 +48,7 @@ public class EnemyTuretBehaivior : MonoBehaviour
     IEnumerator shoot()
     {
         ishooot = false;
+        TuretAudioSorce.Play();
        GameObject bulletInst = Instantiate(bullet, bulletspawnpoint.transform.position, Quaternion.identity);       
         yield return new WaitForSeconds(2);
         ishooot = true;

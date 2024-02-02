@@ -14,6 +14,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] KeyCode ShootButton;
     [SerializeField] Transform bulletSpawn;
     [SerializeField] GameObject Bullet;
+    [SerializeField] AudioSource ShootingSound;
     private bool isShoot = true;
 
     [SerializeField] KeyCode DashKey;
@@ -121,6 +122,7 @@ public class PlayerMovement : MonoBehaviour
         Debug.Log("Shoot");
         isShoot = false;       
         GameObject bulletInst = Instantiate(Bullet, bulletSpawn.transform.position, this.transform.rotation);
+        ShootingSound.Play();
         yield return new WaitForSeconds(0.5f);
         isShoot = true;
 
@@ -130,7 +132,7 @@ public class PlayerMovement : MonoBehaviour
         Debug.Log("Dash");
         isDashReady = false;
         moveDirection = (forward * curSpeedX * DashSpeed) + (right * curSpeedY);
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(1.5f);
         isDashReady = true;
     }
 }
